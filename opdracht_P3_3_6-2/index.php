@@ -13,14 +13,14 @@
     session_start();
     $counter = 0;
     $_SESSION["counter"] += 1;
-    echo "Deze pagina heb je al " . $_SESSION["counter"] . " keer bekeken voordat je de internet browser hebt afgesloten ";
+    echo "Deze pagina heb je al " . $_SESSION["counter"] . " keer bekeken voordat je de internet browser hebt afgesloten.";
     if (!isset($_COOKIE['cookietime'])) {
         setcookie('cookietime', $_SESSION['sessiontime'], time() + 3600);
     }
     if ($_COOKIE['cookietime'] <= $_SESSION['sessiontime']) {
         $_COOKIE['cookietime'] = $_SESSION['sessiontime'];
     }
-    echo '<p>U heeft de pagina in totaal ' . $_COOKIE['cookietime'] . ' keer bezocht</p>';
+    echo 'U heeft de pagina in totaal ' . $_COOKIE['cookietime'] . ' keer bezocht.';
     ?>
 </body>
 
