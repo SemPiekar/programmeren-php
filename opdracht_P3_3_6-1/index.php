@@ -9,11 +9,17 @@
 </head>
 
 <body>
-    <?php 
-        session_start();
+    <?php
+    session_start();
+
+    if(isset($_SESSION['sessiontime'])) {
         $counter = 0;
-        $_SESSION["counter"]+= 1;
-        echo "Deze pagina heb je al " .$_SESSION["counter"] . " keer bekeken voordat je de internet browser hebt afgesloten ";
+        $_SESSION["sessiontime"] += 1;
+        echo "Deze pagina heb je al " . $_SESSION["sessiontime"] . " keer bekeken voordat je de internet browser hebt afgesloten ";
+    } else {
+        $_SESSION['sessiontime'] = 1;
+    }
+
     ?>
 </body>
 
