@@ -11,16 +11,21 @@
 <body>
     <?php
     session_start();
-    $counter = 0;
-    $_SESSION["counter"] += 1;
-    echo "Deze pagina heb je al " . $_SESSION["counter"] . " keer bekeken voordat je de internet browser hebt afgesloten.";
-    if (!isset($_COOKIE['cookietime'])) {
-        setcookie('cookietime', $_SESSION['sessiontime'], time() + 3600);
+    $_SESSION["sessiontime"] += 1;
+    echo "Deze pagina heb je al: " . $_SESSION["sessiontime"] . " keer bekeken voordat je de internet browser hebt afgesloten";
+    echo "<br>";
+    echo "<br>";
+    if (isset($_COOKIE['visited'])) {
+        $_COOKIE["visited"] += 1;
+        setcookie("visited", $_COOKIE["visited"], time() + 3600);
+        echo "Deze pagina heb je al in totaal: " . $_COOKIE["visited"] . " keer bekeken";
+    } else {
+        $_COOKIE["visited"] = 1;
+        setcookie("visited", 1, time() + 3600);
+        echo "Deze pagina heb je al in totaal: 1 keer bekeken";
     }
-    if ($_COOKIE['cookietime'] <= $_SESSION['sessiontime']) {
-        $_COOKIE['cookietime'] = $_SESSION['sessiontime'];
-    }
-    echo 'U heeft de pagina in totaal ' . $_COOKIE['cookietime'] . ' keer bezocht.';
+
+
     ?>
 </body>
 
